@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    script(type='text/javascript'
+           src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    script(type='text/javascript'
+           src='//cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js')
+    script(type='text/javascript',
+           src='//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js')
+    script
+      :coffee
+        viewModel =
+          portals: ko.observable({})
+          server: ko.observable('')
+        window.viewModel = viewModel
+        sammy = Sammy '#main', ->
+          @get /rushu/, ->
+            server = location.hash.replace /^#/, ''
+            $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
+              viewModel.portals data
+              viewModel.server server
+              ko.applyBindings viewModel
+        $ ->
+          sammy.run()
+  body
+    h1 Where is portal?
+    ul(data-bind='foreach: {data: Object.keys(portals()), as: "dimension"}')
+      h2(data-bind='text: dimension')
+      ul(data-bind='foreach: {data: $root.portals()[dimension]}')
+        li(data-bind='text: coordinates')
+

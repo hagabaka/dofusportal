@@ -1,0 +1,28 @@
+{
+  "name": "dofusportal",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.jade",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "jade --out public --pretty index.jade",
+    "publish": "./publish.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hagabaka/dofusportal.git"
+  },
+  "keywords": [
+    "dofus"
+  ],
+  "author": "Yaohan Chen <yaohan.chen@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hagabaka/dofusportal/issues"
+  },
+  "homepage": "https://github.com/hagabaka/dofusportal",
+  "dependencies": {
+    "jade": "^1.8.1",
+    "pagerjs": "^1.0.0"
+  }
+}
