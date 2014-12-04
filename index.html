@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" 
+            src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="//cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js"></script>
+    <script type="text/javascript"
+            src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+    <script>
+      var viewModel = {
+        portals: ko.observable({}),
+        server: ko.observable('')
+      };
+
+      var sammy = Sammy('#main', function() {
+        this.get(/rushu/, function() {
+          var server = location.hash.replace(/^#/, '');
+          $.getJSON("//api.dofusportal.tk/" + server, function(data) {
+            viewModel.portals(data);
+            viewModel.server(server);
+          });
+        });
+      });
+
+      $(function() {
+        sammy.run();
+        ko.applyBindings(viewModel);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Where is portal?</h1>
+    <ul data-bind="foreach: {data: Object.keys(portals()), as: 'dimension'}">
+      <h2 data-bind="text: dimension"></h2>
+      <ul data-bind="foreach: {data: $root.portals()[dimension]}">
+        <li data-bind="text: coordinates"></li>
+      </ul>
+    </ul>
+  </body>
+</html>
