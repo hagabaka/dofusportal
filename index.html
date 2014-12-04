@@ -2,32 +2,44 @@
 <html>
   <head>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+    <script type="text/javascript" src="pager.js"></script>
     <script>(function() {
-  var sammy, viewModel;
+  var viewModel;
 
   viewModel = {
-    portals: ko.observable({}),
-    server: ko.observable('')
+    servers: ['rushu'],
+    portalData: ko.observable([])
+  };
+
+  window.loadData = function(server) {
+    return function(callback) {
+      return $.getJSON("//api.dofusportal.tk/" + server, function(data) {
+        var dimension, portals;
+        console.log('success');
+        viewModel.portalData((function() {
+          var _results;
+          _results = [];
+          for (dimension in data) {
+            portals = data[dimension];
+            _results.push({
+              dimension: dimension,
+              portals: portals
+            });
+          }
+          return _results;
+        })());
+        return callback(viewModel.portalData);
+      });
+    };
   };
 
   window.viewModel = viewModel;
 
-  sammy = Sammy('#main', function() {
-    return this.get(/rushu/, function() {
-      var server;
-      server = location.hash.replace(/^#/, '');
-      return $.getJSON("//api.dofusportal.tk/" + server, function(data) {
-        viewModel.portals(data);
-        viewModel.server(server);
-        return ko.applyBindings(viewModel);
-      });
-    });
-  });
-
   $(function() {
-    return sammy.run();
+    pager.extendWithPage(viewModel);
+    ko.applyBindings(viewModel);
+    return pager.start();
   });
 
 }).call(this);
@@ -36,11 +48,18 @@
   </head>
   <body>
     <h1>Where is portal?</h1>
-    <ul data-bind="foreach: {data: Object.keys(portals()), as: &quot;dimension&quot;}">
-      <h2 data-bind="text: dimension"></h2>
-      <ul data-bind="foreach: {data: $root.portals()[dimension]}">
-        <li data-bind="text: coordinates"></li>
+    <!-- ko foreach: {data: servers, as: 'server'}-->
+    <div data-bind="page: {id: server, withOnShow: loadData(server)}">
+      <p>For server <span data-bind="text: server"></span></p>
+      <ul data-bind="foreach: portalData()">
+        <li>
+          <h2 data-bind="text: dimension"></h2>
+          <ul data-bind="foreach: portals">
+            <li data-bind="text: coordinates"></li>
+          </ul>
+        </li>
       </ul>
-    </ul>
+    </div>
+    <!-- /ko-->
   </body>
 </html>
