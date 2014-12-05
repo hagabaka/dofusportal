@@ -45,7 +45,7 @@ html
           h2.dimension(data-bind='text: dimension')
           ul(data-bind='foreach: portals.slice(0, $parent.limit())')
             li
-              span.coordinates(data-bind='text: coordinates')
+              input.coordinates(readonly data-bind='value: coordinates')
               span.metadata
                 |  Posted by 
                 span.author(data-bind='text: author')
