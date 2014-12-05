@@ -16,10 +16,9 @@ html
           servers: ['Rushu']
           loadData: (server) ->
             (callback) ->
-              $.getJSON "//api.dofusportal.tk/#{server.toLowerCase()}", (data) ->
-                callback(
-                  {dimension: dimension.capitalize(), portals} for dimension, portals of data
-                )
+              $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
+                data.portals = ({dimension, portals} for dimension, portals of data.portals)
+                callback data
         window.viewModel = viewModel
         $ ->
           pager.extendWithPage viewModel
@@ -35,7 +34,12 @@ html
     // ko foreach: {data: servers, as: 'server'}
     div(data-bind='page: {id: server, title: server,' +
                   'withOnShow: $root.loadData(server), params: {limit: 1}}')
-      ul(data-bind='foreach: $data')
+      p Newest portal coordinates 
+        a(data-bind='attr: {href: source}') posted
+        |  by 
+        span(data-bind='text: server')
+        |  players:
+      ul(data-bind='foreach: portals')
         li
           h2.dimension(data-bind='text: dimension')
           ul(data-bind='foreach: portals.slice(0, $parent.limit())')
