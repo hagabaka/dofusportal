@@ -16,8 +16,7 @@
     return function(callback) {
       return $.getJSON("//api.dofusportal.tk/" + server, function(data) {
         var dimension, portals;
-        console.log('success');
-        viewModel.portalData((function() {
+        return callback((function() {
           var _results;
           _results = [];
           for (dimension in data) {
@@ -29,7 +28,6 @@
           }
           return _results;
         })());
-        return callback(viewModel.portalData);
       });
     };
   };
@@ -51,7 +49,7 @@
     <!-- ko foreach: {data: servers, as: 'server'}-->
     <div data-bind="page: {id: server, withOnShow: loadData(server)}">
       <p>For server <span data-bind="text: server"></span></p>
-      <ul data-bind="foreach: portalData()">
+      <ul data-bind="foreach: $data">
         <li>
           <h2 data-bind="text: dimension"></h2>
           <ul data-bind="foreach: portals">
