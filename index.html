@@ -6,51 +6,7 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
     <script type="text/javascript" src="pager.js"></script>
     <script type="text/javascript" src="relative-date.js"></script>
-    <script>(function() {
-  var viewModel;
-
-  String.prototype.capitalize = function() {
-    return this.replace(/^./, function(letter) {
-      return letter.toUpperCase();
-    });
-  };
-
-  viewModel = {
-    servers: ['Rushu'],
-    loadData: function(server) {
-      return function(callback) {
-        return $.getJSON("//api.dofusportal.tk/" + server, function(data) {
-          var dimension, portals;
-          data.portals = (function() {
-            var _ref, _results;
-            _ref = data.portals;
-            _results = [];
-            for (dimension in _ref) {
-              portals = _ref[dimension];
-              _results.push({
-                dimension: dimension,
-                portals: portals
-              });
-            }
-            return _results;
-          })();
-          return callback(data);
-        });
-      };
-    }
-  };
-
-  window.viewModel = viewModel;
-
-  $(function() {
-    pager.extendWithPage(viewModel);
-    ko.applyBindings(viewModel);
-    return pager.start();
-  });
-
-}).call(this);
-
-    </script>
+    <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
     <nav>
@@ -67,7 +23,7 @@
           <h2 data-bind="text: dimension" class="dimension"></h2>
           <ul data-bind="foreach: portals.slice(0, $parent.limit())">
             <li>
-              <input readonly data-bind="value: coordinates" class="coordinates"><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span>
+              <input readonly data-bind="value: coordinates" onclick="this.select()" class="coordinates"><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span> 
                 <time data-bind="attr: {datatime: postingDate},text: relativeDate(new Date(postingDate))"></time></span>
             </li>
           </ul>
