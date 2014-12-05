@@ -9,7 +9,7 @@
   };
 
   viewModel = {
-    servers: ['Rushu'],
+    servers: ['Rushu', 'Rosal'],
     loadData: function(server) {
       return function(callback) {
         return $.getJSON("//api.dofusportal.tk/" + server, function(data) {
