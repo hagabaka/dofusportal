@@ -24,17 +24,17 @@ html
         |  by 
         span(data-bind='text: server')
         |  players:
-      ul(data-bind='foreach: portals')
+      // ko foreach: portals
+      h2.dimension(data-bind='text: dimension')
+      ul(data-bind='foreach: portals.slice(0, $parent.limit())')
         li
-          h2.dimension(data-bind='text: dimension')
-          ul(data-bind='foreach: portals.slice(0, $parent.limit())')
-            li
-              input.coordinates(readonly data-bind='value: coordinates' onclick='this.select()')
-              span.metadata
-                |  Posted by 
-                span.author(data-bind='text: author')
-                |  
-                time(data-bind='attr: {datatime: postingDate},' +
-                               'text: relativeDate(new Date(postingDate))')
+          input.coordinates(readonly data-bind='value: coordinates' onclick='this.select()')
+          span.metadata
+            |  Posted by 
+            span.author(data-bind='text: author')
+            |  
+            time(data-bind='attr: {datatime: postingDate},' +
+                           'text: relativeDate(new Date(postingDate))')
+      // /ko
     // /ko
 
