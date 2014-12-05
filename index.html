@@ -17,7 +17,7 @@
     <h1>Where is portal?</h1>
     <!-- ko foreach: {data: servers, as: 'server'}-->
     <div data-bind="page: {id: server, title: server,withOnShow: $root.loadData(server), params: {limit: 1}}">
-      <p>Newest portal coordinates <a data-bind="attr: {href: source}">posted</a> by <span data-bind="text: server"></span> players:</p>
+      <p>Newest portal coordinates <a title="ImpsVillage dimensional portal position thread" target="impsvillage" data-bind="attr: {href: source}">posted</a> by <span data-bind="text: server"></span> players:</p>
       <!-- ko foreach: portals-->
       <h2 data-bind="text: dimension" class="dimension"></h2>
       <ul data-bind="foreach: portals.slice(0, $parent.limit())">
@@ -27,6 +27,7 @@
         </li>
       </ul>
       <!-- /ko-->
+      <p>Coordinates too old? Update them <a target="impsvillage" title="Reply to ImpsVillage dimensional portal positions thread" data-bind="attr: {href: edit}">here</a>.</p>
     </div>
     <!-- /ko-->
   </body>
