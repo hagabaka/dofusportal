@@ -15,10 +15,10 @@ html
         li(data-bind='css: {active: isVisible}')
           a(data-bind='text: $data.val("title"), page-href: $data')
 
-    h1 Where is portal?
     // ko foreach: {data: servers, as: 'server'}
-    div(data-bind='page: {id: server, title: server,' +
-                  'withOnShow: $root.loadData(server), params: {limit: 1}}')
+    div.page(data-bind='page: {id: server, title: server,' +
+                       'withOnShow: $root.loadData(server), params: {limit: 1}}')
+      h1 Where is portal?
       p Newest portal coordinates 
         a(title='ImpsVillage dimensional portal position thread' target='impsvillage'
           data-bind='attr: {href: source}') posted
