@@ -66,8 +66,10 @@
         <li>
           <h2 data-bind="text: dimension" class="dimension"></h2>
           <ul data-bind="foreach: portals.slice(0, $parent.limit())">
-            <li><span data-bind="text: coordinates" class="coordinates"></span><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span>
-                <time data-bind="attr: {datatime: postingDate},text: relativeDate(new Date(postingDate))"></time></span></li>
+            <li>
+              <input readonly data-bind="value: coordinates" class="coordinates"><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span>
+                <time data-bind="attr: {datatime: postingDate},text: relativeDate(new Date(postingDate))"></time></span>
+            </li>
           </ul>
         </li>
       </ul>
