@@ -9,4 +9,32 @@
   font-size: smaller;
   color: dimgray; }
 
+html, body {
+  margin: 0;
+  padding: 0; }
+
+nav {
+  padding: 1em 1em 0;
+  border-bottom: 1px solid lightgray; }
+  nav ul {
+    margin: 0;
+    padding: 0; }
+    nav ul li {
+      list-style: none;
+      float: left;
+      margin-bottom: 0.5em; }
+      nav ul li a {
+        text-decoration: none;
+        color: black;
+        padding: 0.5em; }
+      nav ul li.active a {
+        background-color: lightgray; }
+    nav ul:last-child::after {
+      content: "";
+      display: block;
+      clear: both; }
+
+.page {
+  margin: 1em; }
+
 /*# sourceMappingURL=style.css.map */
