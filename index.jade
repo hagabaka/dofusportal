@@ -10,10 +10,10 @@ html
       :coffee
         viewModel =
           servers: ['rushu']
-        window.loadData = (server) ->
-          (callback) ->
-            $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
-              callback({dimension, portals} for dimension, portals of data)
+          loadData: (server) ->
+            (callback) ->
+              $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
+                callback({dimension, portals} for dimension, portals of data)
         window.viewModel = viewModel
         $ ->
           pager.extendWithPage viewModel
@@ -22,7 +22,7 @@ html
   body
     h1 Where is portal?
     // ko foreach: {data: servers, as: 'server'}
-    div(data-bind='page: {id: server, withOnShow: loadData(server)}')
+    div(data-bind='page: {id: server, withOnShow: $root.loadData(server)}')
       p For server 
         span(data-bind='text: server')
       ul(data-bind='foreach: $data')
