@@ -23,6 +23,7 @@
   "homepage": "https://github.com/hagabaka/dofusportal",
   "dependencies": {
     "jade": "^1.8.1",
-    "pagerjs": "^1.0.0"
+    "pagerjs": "^1.0.0",
+    "relative-date": "^1.1.1"
   }
 }
