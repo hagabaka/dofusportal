@@ -20,7 +20,8 @@ html
     div(data-bind='page: {id: server, title: server,' +
                   'withOnShow: $root.loadData(server), params: {limit: 1}}')
       p Newest portal coordinates 
-        a(data-bind='attr: {href: source}') posted
+        a(title='ImpsVillage dimensional portal position thread' target='impsvillage'
+          data-bind='attr: {href: source}') posted
         |  by 
         span(data-bind='text: server')
         |  players:
