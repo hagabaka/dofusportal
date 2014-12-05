@@ -8,27 +8,26 @@
   var viewModel;
 
   viewModel = {
-    servers: ['rushu']
-  };
-
-  window.loadData = function(server) {
-    return function(callback) {
-      return $.getJSON("//api.dofusportal.tk/" + server, function(data) {
-        var dimension, portals;
-        return callback((function() {
-          var _results;
-          _results = [];
-          for (dimension in data) {
-            portals = data[dimension];
-            _results.push({
-              dimension: dimension,
-              portals: portals
-            });
-          }
-          return _results;
-        })());
-      });
-    };
+    servers: ['rushu'],
+    loadData: function(server) {
+      return function(callback) {
+        return $.getJSON("//api.dofusportal.tk/" + server, function(data) {
+          var dimension, portals;
+          return callback((function() {
+            var _results;
+            _results = [];
+            for (dimension in data) {
+              portals = data[dimension];
+              _results.push({
+                dimension: dimension,
+                portals: portals
+              });
+            }
+            return _results;
+          })());
+        });
+      };
+    }
   };
 
   window.viewModel = viewModel;
@@ -46,12 +45,12 @@
   <body>
     <h1>Where is portal?</h1>
     <!-- ko foreach: {data: servers, as: 'server'}-->
-    <div data-bind="page: {id: server, withOnShow: loadData(server)}">
+    <div data-bind="page: {id: server, withOnShow: $root.loadData(server), params: {limit: 1}}">
       <p>For server <span data-bind="text: server"></span></p>
       <ul data-bind="foreach: $data">
         <li>
           <h2 data-bind="text: dimension"></h2>
-          <ul data-bind="foreach: portals">
+          <ul data-bind="foreach: portals.slice(0, $parent.limit())">
             <li data-bind="text: coordinates"></li>
           </ul>
         </li>
