@@ -26,11 +26,15 @@ html
           ko.applyBindings viewModel
           pager.start()
   body
+    nav
+      ul(data-bind='foreach: $__page__.children')
+        li(data-bind='css: {active: isVisible}')
+          a(data-bind='text: $data.val("title"), page-href: $data')
+
     h1 Where is portal?
     // ko foreach: {data: servers, as: 'server'}
-    div(data-bind='page: {id: server, withOnShow: $root.loadData(server), params: {limit: 1}}')
-      p For server 
-        span.server(data-bind='text: server')
+    div(data-bind='page: {id: server, title: server,' +
+                  'withOnShow: $root.loadData(server), params: {limit: 1}}')
       ul(data-bind='foreach: $data')
         li
           h2.dimension(data-bind='text: dimension')
