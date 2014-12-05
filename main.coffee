@@ -2,7 +2,7 @@ String::capitalize = ->
   @replace /^./, (letter) ->
     letter.toUpperCase()
 viewModel =
-  servers: ['Rushu']
+  servers: ['Rushu', 'Rosal']
   loadData: (server) ->
     (callback) ->
       $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
