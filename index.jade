@@ -8,23 +8,7 @@ html
            src='//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js')
     script(type='text/javascript', src='pager.js')
     script(type='text/javascript', src='relative-date.js')
-    script
-      :coffee
-        String::capitalize = ->
-          @replace /^./, (letter) ->
-            letter.toUpperCase()
-        viewModel =
-          servers: ['Rushu']
-          loadData: (server) ->
-            (callback) ->
-              $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
-                data.portals = ({dimension, portals} for dimension, portals of data.portals)
-                callback data
-        window.viewModel = viewModel
-        $ ->
-          pager.extendWithPage viewModel
-          ko.applyBindings viewModel
-          pager.start()
+    script(type='text/javascript', src='main.js')
   body
     nav
       ul(data-bind='foreach: $__page__.children')
