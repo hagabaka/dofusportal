@@ -9,12 +9,17 @@ html
     script(type='text/javascript', src='pager.js')
     script
       :coffee
+        String::capitalize = ->
+          @replace /^./, (letter) ->
+            letter.toUpperCase()
         viewModel =
-          servers: ['rushu']
+          servers: ['Rushu']
           loadData: (server) ->
             (callback) ->
-              $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
-                callback({dimension, portals} for dimension, portals of data)
+              $.getJSON "//api.dofusportal.tk/#{server.toLowerCase()}", (data) ->
+                callback(
+                  {dimension: dimension.capitalize(), portals} for dimension, portals of data
+                )
         window.viewModel = viewModel
         $ ->
           pager.extendWithPage viewModel
