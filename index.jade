@@ -33,6 +33,7 @@ html
               span.metadata
                 |  Posted by 
                 span.author(data-bind='text: author')
+                |  
                 time(data-bind='attr: {datatime: postingDate},' +
                                'text: relativeDate(new Date(postingDate))')
     // /ko
