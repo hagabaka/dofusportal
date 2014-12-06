@@ -8,6 +8,13 @@
     });
   };
 
+  ko.bindingHandlers.time = {
+    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+      $(element).attr('datetime', ko.unwrap(valueAccessor()));
+      return $(element).timeago();
+    }
+  };
+
   viewModel = {
     servers: ['Rushu', 'Rosal'],
     loadData: function(server) {
@@ -37,7 +44,7 @@
 
   $(function() {
     pager.extendWithPage(viewModel);
-    ko.applyBindings(viewModel);
+    ko.applyBindings(viewModel, document.documentElement);
     return pager.start();
   });
 

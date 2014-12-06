@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title data-bind="text: &quot;Dofus Dimensional Portal Coordinates - &quot; + pager.activePage$().id()"></title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.js"></script>
     <script type="text/javascript" src="pager.js"></script>
-    <script type="text/javascript" src="relative-date.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
     <nav>
       <ul data-bind="foreach: $__page__.children">
-        <li data-bind="css: {active: isVisible}"><a data-bind="text: $data.val(&quot;title&quot;), page-href: $data"></a></li>
+        <li data-bind="css: {active: isVisible}"><a data-bind="text: $data.id(), page-href: $data"></a></li>
       </ul>
     </nav>
     <!-- ko foreach: {data: servers, as: 'server'}-->
-    <div data-bind="page: {id: server, title: server,withOnShow: $root.loadData(server), params: {limit: 1}}" class="page">
+    <div data-bind="page: {id: server, withOnShow: $root.loadData(server), params: {limit: 1}}" class="page">
       <h1>Where is portal?</h1>
       <p>Newest portal coordinates <a title="ImpsVillage dimensional portal position thread" target="impsvillage" data-bind="attr: {href: source}">posted</a> by <span data-bind="text: server"></span> players:</p>
       <!-- ko foreach: portals-->
@@ -23,12 +24,35 @@
       <ul data-bind="foreach: portals.slice(0, $parent.limit())">
         <li>
           <input readonly data-bind="value: coordinates" onclick="this.select()" class="coordinates"><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span> 
-            <time data-bind="attr: {datatime: postingDate},text: relativeDate(new Date(postingDate))"></time></span>
+            <time data-bind="time: postingDate"></time></span>
         </li>
       </ul>
       <!-- /ko-->
       <p>Coordinates too old? Update them <a target="impsvillage" title="Reply to ImpsVillage dimensional portal positions thread" data-bind="attr: {href: edit}">here</a>.</p>
     </div>
     <!-- /ko-->
+    <div data-bind="page: {id: &quot;About&quot;, role: &quot;start&quot;}" class="page">
+      <h1>What is this?</h1>
+      <p>
+        This website displays coordinates of Dofus dimensional portals which players
+        have posted on ImpsVillage forum threads. Select your server to see them.
+      </p>
+      <p>
+        How accurate and current the portal coordinates are depends on forum users.
+        There may be a slight delay before this page is updated with new forum posts.
+        By using this site, you acknowledge that the site owner and players posting
+        coordinates disclaim all liability in cases of injuries or deaths resulting
+        from improper dimensional teleportation.
+      </p>
+      <p>
+        If your server is not yet listed, consider starting a forum thread for your
+        server, and then contact Happida to add it here.
+      </p>
+      <p>Developers, feel free to check out the source code of this website:</p>
+      <ul>
+        <li><a target="external" href="https://github.com/hagabaka/dofusportal">Web interface</a></li>
+        <li><a target="external" href="https://github.com/hagabaka/dofusportal-api">Portal data API</a></li>
+      </ul>
+    </div>
   </body>
 </html>
