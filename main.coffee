@@ -1,6 +1,12 @@
 String::capitalize = ->
   @replace /^./, (letter) ->
     letter.toUpperCase()
+
+ko.bindingHandlers.time =
+  update: (element, valueAccessor, allBindings, viewModel, bindingContext) ->
+    $(element).attr 'datetime', ko.unwrap(valueAccessor())
+    $(element).timeago()
+
 viewModel =
   servers: ['Rushu', 'Rosal']
   loadData: (server) ->

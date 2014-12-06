@@ -6,8 +6,10 @@ html
            src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')
     script(type='text/javascript',
            src='//cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js')
+    script(type='text/javascript'
+           src='//cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.js')
+
     script(type='text/javascript', src='pager.js')
-    script(type='text/javascript', src='relative-date.js')
     script(type='text/javascript', src='main.js')
   body
     nav
@@ -34,8 +36,7 @@ html
             |  Posted by 
             span.author(data-bind='text: author')
             |  
-            time(data-bind='attr: {datatime: postingDate},' +
-                           'text: relativeDate(new Date(postingDate))')
+            time(data-bind='time: postingDate')
       // /ko
       p Coordinates too old? Update them 
         a(target='impsvillage' title='Reply to ImpsVillage dimensional portal positions thread'
