@@ -17,6 +17,6 @@ viewModel =
 window.viewModel = viewModel
 $ ->
   pager.extendWithPage viewModel
-  ko.applyBindings viewModel
+  ko.applyBindings viewModel, document.documentElement
   pager.start()
 

@@ -1,6 +1,8 @@
 doctype html
 html
   head
+    title(data-bind=
+      'text: "Dofus Dimensional Portal Coordinates - " + pager.activePage$().id()')
     link(rel='stylesheet' type='text/css' href='style.css')
     script(type='text/javascript'
            src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')
@@ -15,10 +17,10 @@ html
     nav
       ul(data-bind='foreach: $__page__.children')
         li(data-bind='css: {active: isVisible}')
-          a(data-bind='text: $data.val("title"), page-href: $data')
+          a(data-bind='text: $data.id(), page-href: $data')
 
     // ko foreach: {data: servers, as: 'server'}
-    div.page(data-bind='page: {id: server, title: server,' +
+    div.page(data-bind='page: {id: server,' +
                        'withOnShow: $root.loadData(server), params: {limit: 1}}')
       h1 Where is portal?
       p Newest portal coordinates 
