@@ -46,3 +46,27 @@ html
         | .
     // /ko
 
+    div.page(data-bind='page: {id: "About", role: "start"}')
+      h1 What is this?
+      p.
+        This website displays coordinates of Dofus dimensional portals which players
+        have posted on ImpsVillage forum threads. Select your server to see them.
+      p.
+        How accurate and current the portal coordinates are depends on forum users.
+        There may be a slight delay before this page is updated with new forum posts.
+        By using this site, you acknowledge that the site owner and players posting
+        coordinates disclaim all liability in cases of injuries or deaths resulting
+        from improper dimensional teleportation.
+      p.
+        If your server is not yet listed, consider starting a forum thread for your
+        server, and then contact Happida to add it here.
+      p.
+        Developers, feel free to check out the source code of this website:
+      ul
+        li
+          a(target='external'
+            href='https://github.com/hagabaka/dofusportal') Web interface
+        li
+          a(target='external'
+            href='https://github.com/hagabaka/dofusportal-api') Portal data API
+
