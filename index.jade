@@ -32,8 +32,8 @@ html
         |  players:
       // ko foreach: portals
       h2.dimension(data-bind='text: dimension')
-      ul(data-bind='foreach: portals.slice(0, $parent.limit())')
-        li
+      ul(class='portals' data-bind='foreach: portals.slice(0, $parent.limit())')
+        li(class='portal')
           input.coordinates(readonly data-bind='value: coordinates' onclick='this.select()')
           span.metadata
             |  Posted by 
