@@ -1,7 +1,7 @@
 .coordinates {
   font-size: larger;
   width: 4.5em;
-  text-align: center;
+  text-align: right;
   font-weight: bold;
   border: none; }
 
@@ -36,5 +36,27 @@ nav {
 
 .page {
   margin: 1em; }
+
+@media only screen and (max-width: 320px) {
+  h1 {
+    display: none; }
+
+  h2, p, nav {
+    font-size: small; }
+
+  h1, h2, p, ul {
+    margin-top: 0.25em;
+    margin-bottom: 0.5em; }
+
+  .portal {
+    list-style: none; }
+
+  .coordinates {
+    font-size: medium;
+    text-align: left; }
+
+  .metadata {
+    display: block;
+    font-size: x-small; } }
 
 /*# sourceMappingURL=style.css.map */
