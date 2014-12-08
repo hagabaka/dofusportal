@@ -8,7 +8,7 @@ ko.bindingHandlers.time =
     $(element).timeago()
 
 viewModel =
-  servers: ['Rushu', 'Rosal']
+  servers: ['Rushu', 'Rosal', 'Shika']
   loadData: (server) ->
     (callback) ->
       $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
