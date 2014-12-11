@@ -1,5 +1,5 @@
 .coordinates {
-  font-size: larger;
+  font-size: large;
   width: 4.5em;
   text-align: right;
   margin-right: 8em;
@@ -24,7 +24,7 @@
     text-transform: capitalize; }
 
 .metadata, .detail {
-  font-size: smaller;
+  font-size: small;
   color: dimgray; }
 
 html, body {
@@ -60,7 +60,8 @@ nav {
     .page ul li {
       list-style: none;
       padding: 0;
-      padding: 1.25em 0; }
+      padding: 1.25em 0;
+      font-size: 0; }
 
 @media only screen and (max-width: 320px) {
   h1 {
