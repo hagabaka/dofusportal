@@ -2,10 +2,23 @@
   font-size: larger;
   width: 4.5em;
   text-align: right;
+  margin-right: 7em;
   font-weight: bold;
   border: none; }
 
-.metadata {
+.detail {
+  display: inline-block;
+  width: 7em;
+  margin-left: -7em;
+  position: relative; }
+
+.area {
+  top: -0.7em; }
+
+.uses {
+  bottom: -0.7em; }
+
+.metadata, .detail {
   font-size: smaller;
   color: dimgray; }
 
@@ -36,6 +49,13 @@ nav {
 
 .page {
   margin: 1em; }
+  .page ul {
+    padding: 0;
+    margin: 0; }
+    .page ul li {
+      list-style: none;
+      padding: 0;
+      margin: 0; }
 
 @media only screen and (max-width: 320px) {
   h1 {
