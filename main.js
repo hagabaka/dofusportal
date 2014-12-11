@@ -19,7 +19,7 @@
     servers: ['Rushu', 'Rosal', 'Shika'],
     loadData: function(server) {
       return function(callback) {
-        return $.getJSON("//api.dofusportal.tk/" + server, function(data) {
+        return $.getJSON("//api.dofusportal.net/" + server, function(data) {
           var dimension, portals;
           data.portals = (function() {
             var _ref, _results;
