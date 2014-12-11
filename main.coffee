@@ -37,5 +37,12 @@ window.viewModel = viewModel
 $ ->
   pager.extendWithPage viewModel
   ko.applyBindings viewModel, document.documentElement
+  pager.onBindingError.add (event) ->
+    console.log event
   pager.start()
 
+ko.bindingHandlers.debug =
+  init: (element, valueAccessor) ->
+    console.log 'Knockoutbinding:'
+    console.log element
+    console.log ko.toJS(valueAccessor())
