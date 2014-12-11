@@ -26,11 +26,11 @@ html
       h1 Where is portal?
       p Newest portal coordinates 
         a(title='ImpsVillage dimensional portal position thread' target='impsvillage'
-          data-bind='attr: {href: source}') posted
+          data-bind='attr: {href: data().source}') posted
         |  by 
         span(data-bind='text: server')
         |  players:
-      // ko foreach: portals
+      // ko foreach: data().portals
       h2.dimension(data-bind='text: dimension')
       ul(class='portals' data-bind='foreach: portals.slice(0, $parent.limit())')
         li(class='portal')
@@ -49,7 +49,7 @@ html
       // /ko
       p Coordinates too old? Update them 
         a(target='impsvillage' title='Reply to ImpsVillage dimensional portal positions thread'
-          data-bind='attr: {href: edit}') here
+          data-bind='attr: {href: data().edit}') here
         | .
     // /ko
 

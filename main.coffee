@@ -7,13 +7,32 @@ ko.bindingHandlers.time =
     $(element).attr 'datetime', ko.unwrap(valueAccessor())
     $(element).timeago()
 
+processData = (data) ->
+  data.portals = ({dimension, portals} for dimension, portals of data.portals)
+  data
+
+serverData = {}
 viewModel =
   servers: ['Rushu', 'Rosal', 'Shika']
   loadData: (server) ->
     (callback) ->
       $.getJSON "//api.dofusportal.net/#{server}", (data) ->
-        data.portals = ({dimension, portals} for dimension, portals of data.portals)
-        callback data
+        processData data
+        if server of serverData
+          result = serverData[server]
+          result.data(data)
+        else
+          result = {data: ko.observable data}
+          serverData[server] = result
+          callback result
+
+viewModel.servers.forEach (server) ->
+  eventsource = new EventSource("//api.dofusportal.net/watch/#{server}")
+  eventsource.onmessage = (event) ->
+    data = event.data
+    processData data
+    serverData[server].data(data)
+
 window.viewModel = viewModel
 $ ->
   pager.extendWithPage viewModel
