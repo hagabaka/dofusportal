@@ -1,3 +1,7 @@
+li.portal {
+  font-size: 0;
+  padding: 1.25em 0; }
+
 .coordinates {
   font-size: large;
   width: 4.5em;
@@ -58,27 +62,18 @@ nav {
     padding: 0;
     margin: 0; }
     .page ul li {
-      list-style: none;
-      padding: 0;
-      padding: 1.25em 0;
-      font-size: 0; }
+      list-style: none; }
 
 @media only screen and (max-width: 320px) {
   h1 {
     display: none; }
 
-  h2, p, nav {
+  h2, p, nav, li {
     font-size: small; }
 
   h1, h2, p, ul {
     margin-top: 0.25em;
     margin-bottom: 0.5em; }
-
-  .page ul li {
-    padding: 0; }
-
-  .portal {
-    list-style: none; }
 
   .coordinates {
     font-size: medium;
