@@ -27,9 +27,9 @@
           <input readonly data-bind="value: coordinates" onclick="this.select()" class="coordinates">
           <!-- ko if: area--><span data-bind="text: area" class="detail area"></span>
           <!-- /ko-->
-          <!-- ko if: uses--><span data-bind="text: uses + &quot; uses&quot;" class="detail uses"></span>
-          <!-- /ko--><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span> 
-            <time data-bind="time: postingDate"></time></span>
+          <!-- ko if: uses--><span data-bind="text: uses + &quot; uses&quot;" title="At time of posting" class="detail uses"></span>
+          <!-- /ko-->
+          <time data-bind="time: postingDate" class="detail postingDate"></time><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span> </span>
         </li>
       </ul>
       <!-- /ko-->

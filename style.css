@@ -2,21 +2,26 @@
   font-size: larger;
   width: 4.5em;
   text-align: right;
-  margin-right: 7em;
+  margin-right: 8em;
   font-weight: bold;
   border: none; }
 
 .detail {
   display: inline-block;
-  width: 7em;
-  margin-left: -7em;
+  width: 10em;
+  margin-left: -10em;
   position: relative; }
 
 .area {
-  top: -0.7em; }
+  top: -1.5em; }
 
 .uses {
-  bottom: -0.7em; }
+  bottom: -1.5em; }
+
+.postingDate {
+  bottom: 0; }
+  .postingDate::first-letter {
+    text-transform: capitalize; }
 
 .metadata, .detail {
   font-size: smaller;
@@ -55,7 +60,7 @@ nav {
     .page ul li {
       list-style: none;
       padding: 0;
-      margin: 0; }
+      padding: 1.25em 0; }
 
 @media only screen and (max-width: 320px) {
   h1 {
@@ -68,15 +73,24 @@ nav {
     margin-top: 0.25em;
     margin-bottom: 0.5em; }
 
+  .page ul li {
+    padding: 0; }
+
   .portal {
     list-style: none; }
 
   .coordinates {
     font-size: medium;
-    text-align: left; }
+    text-align: left;
+    margin: 0; }
 
-  .metadata {
+  .metadata, .detail {
     display: block;
-    font-size: x-small; } }
+    font-size: x-small; }
+
+  .detail {
+    position: static;
+    margin: 0;
+    width: initial; } }
 
 /*# sourceMappingURL=style.css.map */
