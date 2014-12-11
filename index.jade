@@ -35,6 +35,12 @@ html
       ul(class='portals' data-bind='foreach: portals.slice(0, $parent.limit())')
         li(class='portal')
           input.coordinates(readonly data-bind='value: coordinates' onclick='this.select()')
+          // ko if: area
+          span.detail.area(data-bind='text: area')
+          // /ko
+          // ko if: uses
+          span.detail.uses(data-bind='text: uses + " uses"')
+          // /ko
           span.metadata
             |  Posted by 
             span.author(data-bind='text: author')
