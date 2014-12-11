@@ -39,13 +39,13 @@ html
           span.detail.area(data-bind='text: area')
           // /ko
           // ko if: uses
-          span.detail.uses(data-bind='text: uses + " uses"')
+          span.detail.uses(data-bind='text: uses + " uses"' title='At time of posting')
           // /ko
+          time.detail.postingDate(data-bind='time: postingDate')
           span.metadata
             |  Posted by 
             span.author(data-bind='text: author')
             |  
-            time(data-bind='time: postingDate')
       // /ko
       p Coordinates too old? Update them 
         a(target='impsvillage' title='Reply to ImpsVillage dimensional portal positions thread'
