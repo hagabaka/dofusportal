@@ -11,7 +11,7 @@ viewModel =
   servers: ['Rushu', 'Rosal', 'Shika']
   loadData: (server) ->
     (callback) ->
-      $.getJSON "//api.dofusportal.tk/#{server}", (data) ->
+      $.getJSON "//api.dofusportal.net/#{server}", (data) ->
         data.portals = ({dimension, portals} for dimension, portals of data.portals)
         callback data
 window.viewModel = viewModel
