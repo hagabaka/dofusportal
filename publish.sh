@@ -14,4 +14,5 @@ git push origin gh-pages:gh-pages
 
 git checkout master
 ./clean.sh
+git push
 
