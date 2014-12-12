@@ -34,6 +34,7 @@ viewModel.servers.forEach (server) ->
     serverData[server].data(data)
 
 window.viewModel = viewModel
+window.serverData = serverData
 $ ->
   pager.extendWithPage viewModel
   ko.applyBindings viewModel, document.documentElement
