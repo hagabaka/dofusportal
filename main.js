@@ -47,10 +47,11 @@
             eventSource = new EventSource("//api.dofusportal.net/watch/" + server);
             eventSources[server] = eventSource;
             eventSource.onmessage = function(event) {
+              var updateData;
               if (server in serverData) {
-                data = JSON.parse(event.data);
-                processData(data);
-                return serverData[server].data(data);
+                updateData = JSON.parse(event.data);
+                processData(updateData);
+                return serverData[server].data(updateData);
               }
             };
           }
