@@ -43,7 +43,7 @@
       return function(callback) {
         return $.getJSON("//api.dofusportal.net/" + server, function(data) {
           var eventSource, result;
-          if (!(server in eventSources)) {
+          if ((typeof EventSource !== "undefined" && EventSource !== null) && !(server in eventSources)) {
             eventSource = new EventSource("//api.dofusportal.net/watch/" + server);
             eventSources[server] = eventSource;
             eventSource.onmessage = function(event) {
