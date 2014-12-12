@@ -23,9 +23,9 @@ viewModel =
           eventSources[server] = eventSource
           eventSource.onmessage = (event) ->
             if server of serverData
-              data = JSON.parse event.data
-              processData data
-              serverData[server].data(data)
+              updateData = JSON.parse event.data
+              processData updateData
+              serverData[server].data(updateData)
 
         processData data
 
