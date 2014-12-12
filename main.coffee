@@ -12,12 +12,23 @@ processData = (data) ->
   data
 
 serverData = {}
+eventsources = {}
 viewModel =
   servers: ['Rushu', 'Rosal', 'Shika']
   loadData: (server) ->
     (callback) ->
       $.getJSON "//api.dofusportal.net/#{server}", (data) ->
+        unless server of eventsources
+          eventsource = new EventSource("//api.dofusportal.net/watch/#{server}")
+          eventsources[server] = eventsource
+          eventsource.onmessage = (event) ->
+            if server of serverData
+              data = JSON.parse event.data
+              processData data
+              serverData[server].data(data)
+
         processData data
+
         if server of serverData
           result = serverData[server]
           result.data(data)
@@ -26,16 +37,10 @@ viewModel =
           serverData[server] = result
           callback result
 
-viewModel.servers.forEach (server) ->
-  eventsource = new EventSource("//api.dofusportal.net/watch/#{server}")
-  eventsource.onmessage = (event) ->
-    if server of serverData
-      data = JSON.parse event.data
-      processData data
-      serverData[server].data(data)
-
 window.viewModel = viewModel
 window.serverData = serverData
+window.eventsources = eventsources
+
 $ ->
   pager.extendWithPage viewModel
   ko.applyBindings viewModel, document.documentElement
