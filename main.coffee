@@ -12,16 +12,16 @@ processData = (data) ->
   data
 
 serverData = {}
-eventsources = {}
+eventSources = {}
 viewModel =
   servers: ['Rushu', 'Rosal', 'Shika']
   loadData: (server) ->
     (callback) ->
       $.getJSON "//api.dofusportal.net/#{server}", (data) ->
-        unless server of eventsources
-          eventsource = new EventSource("//api.dofusportal.net/watch/#{server}")
-          eventsources[server] = eventsource
-          eventsource.onmessage = (event) ->
+        unless server of eventSources
+          eventSource = new EventSource("//api.dofusportal.net/watch/#{server}")
+          eventSources[server] = eventSource
+          eventSource.onmessage = (event) ->
             if server of serverData
               data = JSON.parse event.data
               processData data
@@ -39,7 +39,7 @@ viewModel =
 
 window.viewModel = viewModel
 window.serverData = serverData
-window.eventsources = eventsources
+window.eventSources = eventSources
 
 $ ->
   pager.extendWithPage viewModel
