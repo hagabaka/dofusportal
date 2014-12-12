@@ -29,9 +29,10 @@ viewModel =
 viewModel.servers.forEach (server) ->
   eventsource = new EventSource("//api.dofusportal.net/watch/#{server}")
   eventsource.onmessage = (event) ->
-    data = JSON.parse event.data
-    processData data
-    serverData[server].data(data)
+    if server of serverData
+      data = JSON.parse event.data
+      processData data
+      serverData[server].data(data)
 
 window.viewModel = viewModel
 window.serverData = serverData
