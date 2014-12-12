@@ -18,7 +18,7 @@ viewModel =
   loadData: (server) ->
     (callback) ->
       $.getJSON "//api.dofusportal.net/#{server}", (data) ->
-        unless server of eventSources
+        if EventSource? and server not of eventSources
           eventSource = new EventSource("//api.dofusportal.net/watch/#{server}")
           eventSources[server] = eventSource
           eventSource.onmessage = (event) ->
