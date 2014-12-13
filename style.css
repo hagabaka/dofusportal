@@ -1,11 +1,13 @@
+h1, h2 {
+  font-weight: normal; }
+
 li.portal {
-  font-size: 0;
+  word-spacing: -0.2em;
   padding: 1.25em 0; }
 
 .coordinates {
   font-size: large;
   width: 4.5em;
-  text-align: right;
   margin-right: 8em;
   font-weight: bold;
   border: none; }
