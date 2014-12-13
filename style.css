@@ -4,6 +4,8 @@ h1, h2 {
 li.portal {
   word-spacing: -0.2em;
   padding: 1.25em 0; }
+  li.portal * {
+    word-spacing: normal; }
 
 .coordinates {
   font-size: large;
