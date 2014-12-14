@@ -38,7 +38,7 @@ viewModel =
           result = {data: ko.observable data}
           serverData[server] = result
           callback result
-      .always -> $('#spinner').hide()
+      .always -> $('#spinner').fadeOut()
 
 window.viewModel = viewModel
 window.serverData = serverData
