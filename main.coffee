@@ -13,10 +13,12 @@ processData = (data) ->
 
 serverData = {}
 eventSources = {}
+
 viewModel =
   servers: ['Rushu', 'Rosal', 'Shika']
   loadData: (server) ->
     (callback) ->
+      $('#spinner').show()
       $.getJSON "//api.dofusportal.net/#{server}", (data) ->
         if EventSource? and server not of eventSources
           eventSource = new EventSource("//api.dofusportal.net/watch/#{server}")
@@ -36,12 +38,14 @@ viewModel =
           result = {data: ko.observable data}
           serverData[server] = result
           callback result
+      .always -> $('#spinner').hide()
 
 window.viewModel = viewModel
 window.serverData = serverData
 window.eventSources = eventSources
 
 $ ->
+  $('<div id="spinner"><progress indeterminate></progress></div>').appendTo('body').hide()
   pager.extendWithPage viewModel
   ko.applyBindings viewModel, document.documentElement
   pager.onBindingError.add (event) ->
