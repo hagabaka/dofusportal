@@ -68,7 +68,7 @@
             return callback(result);
           }
         }).always(function() {
-          return $('#spinner').hide();
+          return $('#spinner').fadeOut();
         });
       };
     }
