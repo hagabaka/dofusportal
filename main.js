@@ -41,6 +41,7 @@
     servers: ['Rushu', 'Rosal', 'Shika'],
     loadData: function(server) {
       return function(callback) {
+        $('#spinner').show();
         return $.getJSON("//api.dofusportal.net/" + server, function(data) {
           var eventSource, result;
           if ((typeof EventSource !== "undefined" && EventSource !== null) && !(server in eventSources)) {
@@ -66,6 +67,8 @@
             serverData[server] = result;
             return callback(result);
           }
+        }).always(function() {
+          return $('#spinner').hide();
         });
       };
     }
@@ -78,6 +81,7 @@
   window.eventSources = eventSources;
 
   $(function() {
+    $('<div id="spinner"><progress indeterminate></progress></div>').appendTo('body').hide();
     pager.extendWithPage(viewModel);
     ko.applyBindings(viewModel, document.documentElement);
     pager.onBindingError.add(function(event) {
