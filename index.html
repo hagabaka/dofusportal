@@ -17,21 +17,19 @@
       </ul>
     </nav>
     <!-- ko foreach: {data: servers, as: 'server'}-->
-    <div data-bind="page: {id: server, withOnShow: $root.loadData(server), params: {limit: 1}}" class="page">
+    <div data-bind="page: {id: server, withOnShow: $root.loadData(server)}" class="page">
       <h1>Where is portal?</h1>
       <p>Newest portal coordinates <a title="ImpsVillage dimensional portal position thread" target="impsvillage" data-bind="attr: {href: data().source}">posted</a> by <span data-bind="text: server"></span> players:</p>
       <!-- ko foreach: data().portals-->
       <h2 data-bind="text: dimension" class="dimension"></h2>
-      <ul data-bind="foreach: portals.slice(0, $parent.limit())" class="portals">
-        <li class="portal">
-          <input readonly data-bind="value: coordinates" onclick="this.select()" class="coordinates">
-          <!-- ko if: area--><span data-bind="text: area" class="detail area"></span>
-          <!-- /ko-->
-          <!-- ko if: uses--><span data-bind="text: uses + &quot; uses&quot;" title="At time of posting" class="detail uses"></span>
-          <!-- /ko-->
-          <time data-bind="time: postingDate" class="detail postingDate"></time><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span> </span>
-        </li>
-      </ul>
+      <div data-bind="with: portals[0]" class="portal">
+        <input readonly data-bind="value: coordinates" onclick="this.select()" class="coordinates">
+        <!-- ko if: area--><span data-bind="text: area" class="detail area"></span>
+        <!-- /ko-->
+        <!-- ko if: uses--><span data-bind="text: uses + &quot; uses&quot;" title="At time of posting" class="detail uses"></span>
+        <!-- /ko-->
+        <time data-bind="time: postingDate" class="detail postingDate"></time><span class="metadata"> Posted by <span data-bind="text: author" class="author"></span> </span>
+      </div>
       <!-- /ko-->
       <p>Coordinates too old? Update them <a target="impsvillage" title="Reply to ImpsVillage dimensional portal positions thread" data-bind="attr: {href: data().edit}">here</a>.</p>
     </div>
