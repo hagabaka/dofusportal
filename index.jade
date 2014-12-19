@@ -22,7 +22,7 @@ html
 
     // ko foreach: {data: servers, as: 'server'}
     div.page(data-bind=
-      'page: {id: server, withOnShow: $root.loadData(server), params: {limit: 1}}')
+      'page: {id: server, withOnShow: $root.loadData(server)}')
       h1 Where is portal?
       p Newest portal coordinates 
         a(title='ImpsVillage dimensional portal position thread' target='impsvillage'
@@ -32,20 +32,19 @@ html
         |  players:
       // ko foreach: data().portals
       h2.dimension(data-bind='text: dimension')
-      ul(class='portals' data-bind='foreach: portals.slice(0, $parent.limit())')
-        li(class='portal')
-          input.coordinates(readonly data-bind='value: coordinates' onclick='this.select()')
-          // ko if: area
-          span.detail.area(data-bind='text: area')
-          // /ko
-          // ko if: uses
-          span.detail.uses(data-bind='text: uses + " uses"' title='At time of posting')
-          // /ko
-          time.detail.postingDate(data-bind='time: postingDate')
-          span.metadata
-            |  Posted by 
-            span.author(data-bind='text: author')
-            |  
+      div.portal(data-bind='with: portals[0]')
+        input.coordinates(readonly data-bind='value: coordinates' onclick='this.select()')
+        // ko if: area
+        span.detail.area(data-bind='text: area')
+        // /ko
+        // ko if: uses
+        span.detail.uses(data-bind='text: uses + " uses"' title='At time of posting')
+        // /ko
+        time.detail.postingDate(data-bind='time: postingDate')
+        span.metadata
+          |  Posted by 
+          span.author(data-bind='text: author')
+          |  
       // /ko
       p Coordinates too old? Update them 
         a(target='impsvillage' title='Reply to ImpsVillage dimensional portal positions thread'
