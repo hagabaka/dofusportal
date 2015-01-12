@@ -38,7 +38,7 @@
   eventSources = {};
 
   viewModel = {
-    servers: ['Rushu', 'Rosal', 'Shika'],
+    servers: ['Rushu', 'Rosal', 'Shika', 'Solar'],
     loadData: function(server) {
       return function(callback) {
         $('#spinner').show();
