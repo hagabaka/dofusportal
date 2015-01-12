@@ -15,7 +15,7 @@ serverData = {}
 eventSources = {}
 
 viewModel =
-  servers: ['Rushu', 'Rosal', 'Shika']
+  servers: ['Rushu', 'Rosal', 'Shika', 'Solar']
   loadData: (server) ->
     (callback) ->
       $('#spinner').show()
