@@ -46,10 +46,21 @@ html
           span.author(data-bind='text: author')
           |  
       // /ko
-      p Coordinates too old? Update them 
+      p Coordinates too old? 
+        a(target='external' title='Dofus Wiki page on portal/treasure hunts'
+          href='http://dofuswiki.wikia.com/wiki/Treasure_Hunt#Portal_Hunt') Find
+        |  the new portal and update it 
         a(target='impsvillage' title='Reply to ImpsVillage dimensional portal positions thread'
           data-bind='attr: {href: data().edit}') here
         | .
+      p Maps and guides for the dimensions:
+        ul
+          li: a(title='Xelorium quest guides and maps' target='external'
+            href='http://gondawa.com/index.php/en/blog/xelorium-quests/xel-informations-en/')
+            | From Gondawa
+          li: a(title='Divine dimensions guides' target='external'
+            href='http://domainofthetwelve.tumblr.com/TOC')
+            | By SnarkHunter
     // /ko
 
     div.page(data-bind='page: {id: "About", role: "start"}')
