@@ -53,14 +53,18 @@ html
         a(target='impsvillage' title='Reply to ImpsVillage dimensional portal positions thread'
           data-bind='attr: {href: data().edit}') here
         | .
-      p Maps and guides for the dimensions:
+      div.related
         ul
-          li: a(title='Xelorium quest guides and maps' target='external'
-            href='http://gondawa.com/index.php/en/blog/xelorium-quests/xel-informations-en/')
-            | From Gondawa
-          li: a(title='Divine dimensions guides' target='external'
-            href='http://domainofthetwelve.tumblr.com/TOC')
-            | By SnarkHunter
+          li
+            a(title='Xelorium quest guides and maps' target='external'
+              href='http://gondawa.com/index.php/en/blog/xelorium-quests/xel-informations-en/')
+                | Xelorium quest guides and maps
+              |  from Gondawa
+          li
+            a(title='Divine dimensions guides' target='external'
+              href='http://domainofthetwelve.tumblr.com/TOC')
+              | Divine dimensions guides
+            |  by SnarkHunter
     // /ko
 
     div.page(data-bind='page: {id: "About", role: "start"}')
