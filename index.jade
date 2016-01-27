@@ -31,6 +31,7 @@ html
         span(data-bind='text: server')
         |  players:
       // ko foreach: data().portals
+      // ko if: portals.length
       h2.dimension(data-bind='text: dimension')
       div.portal(data-bind='with: portals[0]')
         input.coordinates(readonly data-bind='value: coordinates' onclick='this.select()')
@@ -45,6 +46,7 @@ html
           |  Posted by 
           span.author(data-bind='text: author')
           |  
+      // /ko
       // /ko
       p Coordinates too old? 
         a(target='external' title='Dofus Wiki page on portal/treasure hunts'
