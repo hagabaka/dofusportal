@@ -14,14 +14,15 @@ processData = (data) ->
 serverData = {}
 eventSources = {}
 
+window.API_URL = '//api.dofusportal.net'
 viewModel =
   servers: ['Rushu', 'Rosal', 'Shika', 'Solar']
   loadData: (server) ->
     (callback) ->
       $('#spinner').show()
-      $.getJSON "//api.dofusportal.net/#{server}", (data) ->
+      $.getJSON "#{window.API_URL}/#{server}", (data) ->
         if EventSource? and server not of eventSources
-          eventSource = new EventSource("//api.dofusportal.net/watch/#{server}")
+          eventSource = new EventSource("#{window.API_URL}/watch/#{server}")
           eventSources[server] = eventSource
           eventSource.onmessage = (event) ->
             if server of serverData
