@@ -40,7 +40,7 @@
   window.API_URL = '//api.dofusportal.net';
 
   viewModel = {
-    servers: ['Rushu', 'Rosal', 'Shika', 'Solar'],
+    servers: ['Rushu', 'Rosal', 'Shika', 'Solar', 'Test'],
     loadData: function(server) {
       return function(callback) {
         $('#spinner').show();
