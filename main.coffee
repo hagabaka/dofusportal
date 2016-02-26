@@ -15,12 +15,14 @@ serverData = {}
 eventSources = {}
 
 window.API_URL = '//api.dofusportal.net'
+previous_request = null
 viewModel =
   servers: ['Rushu', 'Rosal', 'Shika', 'Solar', 'Zatoishwan', 'Test']
   loadData: (server) ->
     (callback) ->
-      fetch("#{window.API_URL}/#{server}").then (response) -> response.json()
-      .then (data) ->
+      $('#spinner').show()
+      previous_request?.abort()
+      previous_request = $.getJSON "#{window.API_URL}/#{server}", (data) ->
         if EventSource? and server not of eventSources
           eventSource = new EventSource("#{window.API_URL}/watch/#{server}")
           eventSources[server] = eventSource
@@ -37,6 +39,9 @@ viewModel =
           result.data(data)
         else
           result = {data: ko.observable data}
+          serverData[server] = result
+          callback result
+      .always -> $('#spinner').fadeOut()
 
 window.viewModel = viewModel
 window.serverData = serverData
