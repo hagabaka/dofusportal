@@ -42,7 +42,7 @@
   previous_request = null;
 
   viewModel = {
-    servers: ['Echo', 'OtoMustam', 'Rushu', 'Rosal', 'Shika', 'Solar', 'Zatoishwan', 'Test'],
+    servers: ['Echo', 'OtoMustam', 'Test'],
     loadData: function(server) {
       return function(callback) {
         $('#spinner').show();
