@@ -17,7 +17,7 @@ eventSources = {}
 window.API_URL = '//api.dofusportal.net'
 previous_request = null
 viewModel =
-  servers: ['Rushu', 'Rosal', 'Shika', 'Solar', 'Zatoishwan', 'Test']
+  servers: ['Echo', 'Rushu', 'Rosal', 'Shika', 'Solar', 'Zatoishwan', 'Test']
   loadData: (server) ->
     (callback) ->
       $('#spinner').show()
