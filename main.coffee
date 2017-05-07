@@ -17,8 +17,9 @@ eventSources = {}
 window.API_URL = '//api.dofusportal.net'
 previous_request = null
 viewModel =
-  servers: ['Echo', 'OtoMustam', 'Test']
+  servers: ['Echo', 'Oto Mustam', 'Test']
   loadData: (server) ->
+    server = server.replace(/s+/, '')
     (callback) ->
       $('#spinner').show()
       previous_request?.abort()
