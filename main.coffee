@@ -19,7 +19,6 @@ previous_request = null
 viewModel =
   servers: ['Echo', 'Oto Mustam', 'Test']
   loadData: (server) ->
-    server = server.replace(/s+/, '')
     (callback) ->
       $('#spinner').show()
       previous_request?.abort()
