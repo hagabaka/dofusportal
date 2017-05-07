@@ -42,8 +42,9 @@
   previous_request = null;
 
   viewModel = {
-    servers: ['Echo', 'OtoMustam', 'Test'],
+    servers: ['Echo', 'Oto Mustam', 'Test'],
     loadData: function(server) {
+      server = server.replace(/s+/, '');
       return function(callback) {
         $('#spinner').show();
         if (previous_request != null) {
